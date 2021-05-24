@@ -1,0 +1,255 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body {
+    margin: 0;
+    height: 100%;
+    overflow: hidden;
+    font-size: 14px;
+    font-family: "Microsoft YaHei", 微软雅黑, "MicrosoftJhengHei", 华文细黑, STHeiti, MingLiu
+}
+
+#fengMap {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    overflow: hidden;
+    touch-action: none;
+    -ms-touch-action: none;
+}
+
+/* 按钮组 */
+.btnsGroup {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    display: none;
+}
+
+.btnsGroup button {
+    padding: 8px;
+    cursor: pointer;
+    display: block;
+    margin-bottom: 5px;
+    border: 1px solid #ccc;
+    outline: none;
+    background-color: #fff;
+}
+
+.btnsGroup button.active {
+    background-color: #3385ff;
+    border: 1px solid #3385ff;
+    color: #fff;
+}
+
+.btnsGroup button.disabled {
+    background-color: #ccc;
+    border: none;
+}
+
+/*覆盖物管理*/
+.btns {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    display: none;
+}
+
+.btns label {
+    color: #fff;
+}
+
+.btns button {
+    padding: 8px;
+    cursor: pointer;
+    margin-bottom: 5px;
+    border: 1px solid #ccc;
+    outline: none;
+    background-color: #fff;
+}
+
+.btns button.active {
+    background-color: #3385ff;
+    border: 1px solid #3385ff;
+    color: #fff;
+}
+
+.markersSelect {
+    height: 38px;
+    border: 1px solid #ccc;
+}
+
+/* 提示语 */
+.tip {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    line-height: 22px;
+    background: rgba(204, 204, 204, 0.26);
+    padding: 10px 20px;
+    display: none;
+    color: #fff;
+}
+
+/* domMarker demo start */
+/* 报警marker */
+.domContainer {
+    width: 100%;
+    height: 100%;
+}
+
+.domContainer canvas {
+    display: block;
+    position: absolute;
+    left: 0;
+    top: -9px;
+}
+
+/* 保持大小不变的小圆圈  */
+.dot {
+    width: 100%;
+    height: 100%;
+    background: url(../images/01.gif) no-repeat;
+    background-size: 100%;
+    z-index: 200;
+}
+
+
+/* 产生动画（向外扩散变大）的圆圈  */
+.pulse,
+.pulse-big {
+    position: absolute;
+    width: 120px;
+    height: 120px;
+    border: 2px solid #EF2D02;
+    background: rgba(239, 45, 2, 0.8);
+    border-radius: 50%;
+    z-index: 100;
+    opacity: 0;
+    top: -45px;
+    left: -45px;
+}
+
+.pulse {
+    background: rgba(239, 45, 2, 0.6) !important;
+    -webkit-animation: warn 0.9s ease-out;
+    -moz-animation: warn 0.9s ease-out;
+    animation: warn 0.9s ease-out;
+    -webkit-animation-iteration-count: infinite;
+    -moz-animation-iteration-count: infinite;
+    animation-iteration-count: infinite;
+    box-shadow: 1px 1px 30px #EF2D02;
+}
+
+.pulse-big {
+    background: rgba(239, 45, 2, 0.6) !important;
+    -webkit-animation: warn1 0.9s ease-out;
+    -moz-animation: warn1 0.9s ease-out;
+    animation: warn1 0.9s ease-out;
+    -webkit-animation-iteration-count: infinite;
+    -moz-animation-iteration-count: infinite;
+    animation-iteration-count: infinite;
+    box-shadow: 1px 1px 30px #EF2D02;
+}
+
+@keyframes warn {
+    0% {
+        -moz-transform: scale(0);
+        transform: scale(0);
+        opacity: 1;
+    }
+
+    100% {
+        -moz-transform: scale(1);
+        transform: scale(1);
+        opacity: 0;
+    }
+}
+
+@keyframes warn1 {
+    0% {
+        -o-transform: scale(0);
+        transform: scale(0);
+        opacity: 1;
+    }
+
+    100% {
+        -o-transform: scale(0.6);
+        transform: scale(0.6);
+        opacity: 0;
+    }
+}
+
+/* video dom */
+
+.videoDom,
+.videoDom::before,
+.videoDom::after {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.videoDom {
+    width: 200px;
+    height: 100px;
+    margin: auto;
+    /* background: url("../images/Button-White-Large.png") no-repeat 50%/70% rgba(0, 0, 0, 0.1); */
+    color: #3385FF;
+    box-shadow: inset 0 0 0 2px rgba(51, 133, 255, 0.8);
+    line-height: 100px;
+}
+
+
+
+.videoDom::before,
+.videoDom::after {
+    content: '';
+    z-index: -1;
+    margin: -5%;
+    box-shadow: inset 0 0 0 2px;
+    animation: clipMe 8s linear infinite;
+}
+
+.videoDom::before {
+    animation-delay: -4s;
+}
+
+.videoDom:hover::after,
+.videoDom:hover::before {
+    background-color: rgba(255, 0, 0, 0.3);
+}
+
+video {
+    object-fit: fill;
+    width: 100%;
+    height: auto;
+    vertical-align: middle;
+}
+
+@keyframes clipMe {
+
+    0%,
+    100% {
+        clip: rect(0px, 250.0px, 0px, 0px);
+    }
+
+    25% {
+        clip: rect(0px, 2px, 250.0px, 0px);
+    }
+
+    50% {
+        clip: rect(230.0px, 250.0px, 250.0px, 0px);
+    }
+
+    75% {
+        clip: rect(0px, 250.0px, 250.0px, 230.0px);
+    }
+}
+
+/* domMarker demo end */

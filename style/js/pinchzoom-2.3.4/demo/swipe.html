@@ -1,0 +1,90 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Pinchzoom.js Demo</title>
+
+    <style type='text/css'>
+      .slider {
+        width: 100vw;
+        height: 100vh;
+      }
+    </style>
+    <link rel="stylesheet" href="style.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+
+    <script type="text/javascript" src="swipe.js"></script>
+    <script type="text/javascript" src="../dist/pinch-zoom.umd.js"></script>
+</head>
+<body>
+    <div class="page">
+        <div id='slider'>
+            <ul>
+                <li style='display:block'>
+                  <div class="pinch-zoom-parent">
+                    <div class="pinch-zoom">
+                        <div class="description">
+                            <h1>Pinchzoom.js</h1>
+                            <p>
+                                Combined with swipe.js
+                            </p>
+                        </div>
+                        <img src="frog.jpg"/>
+                    </div>
+                  </div>
+                </li>
+                <li style='display:none'>
+                  <div class="pinch-zoom-parent">
+                    <div class="pinch-zoom">
+                        <div class="description">
+                            <h1>Pinchzoom.js</h1>
+                            <p>
+                                Multi-touch zoom in Javascript
+                            </p>
+                        </div>
+                        <img src="frog.jpg"/>
+                    </div>
+                  </div>
+                </li>
+                <li style='display:none'>
+                  <div class="pinch-zoom-parent">
+                    <div class="pinch-zoom">
+                        <div class="description">
+                            <h1>Pinchzoom.js</h1>
+                            <p>
+                                Multi-touch zoom in Javascript
+                            </p>
+                        </div>
+                        <img src="frog.jpg"/>
+                    </div>
+                  </div>
+                </li>
+                <li style='display:none'>
+                  <div class="pinch-zoom-parent">
+                    <div class="pinch-zoom">
+                        <div class="description">
+                            <h1>Pinchzoom.js</h1>
+                            <p>
+                                Multi-touch zoom in Javascript
+                            </p>
+                        </div>
+                        <img src="frog.jpg"/>
+                    </div>
+                  </div>
+                </li>
+            </ul>
+
+    </div>
+
+    <script type='text/javascript'>
+      Array.from(document.querySelectorAll('.pinch-zoom')).forEach(function(el) {
+        new PinchZoom.default(el, {});
+      });
+
+      window.mySwipe = new Swipe(document.querySelector('#slider'), {
+        speed: 400,
+      });
+    </script>
+
+</body>
+</html>
